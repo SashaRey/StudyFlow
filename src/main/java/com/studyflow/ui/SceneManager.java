@@ -28,7 +28,6 @@ public class SceneManager {
             }
 
             Scene scene = new Scene(root, 1000, 640);
-            scene.getStylesheets().add(getClass().getResource("/styles/app.css").toExternalForm());
             primaryStage.setTitle(AppConfig.APP_TITLE);
             primaryStage.setScene(scene);
             primaryStage.show();
