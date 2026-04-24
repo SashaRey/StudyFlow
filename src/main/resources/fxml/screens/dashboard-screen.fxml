@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="14.0" styleClass="screen-root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <Label styleClass="screen-title" text="Dashboard"/>
+    <Label styleClass="screen-subtitle" text="Welcome to StudyFlow. Choose a module in the sidebar to start."/>
+
+    <HBox spacing="12.0">
+        <VBox styleClass="info-card" HBox.hgrow="ALWAYS" spacing="6.0">
+            <Label styleClass="card-title" text="Today's Focus"/>
+            <Label styleClass="card-text" text="No active session yet"/>
+        </VBox>
+        <VBox styleClass="info-card" HBox.hgrow="ALWAYS" spacing="6.0">
+            <Label styleClass="card-title" text="Upcoming"/>
+            <Label styleClass="card-text" text="No upcoming deadlines"/>
+        </VBox>
+    </HBox>
+
+    <Region VBox.vgrow="ALWAYS"/>
+</VBox>
+

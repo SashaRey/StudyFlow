@@ -8,26 +8,28 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane prefHeight="640.0" prefWidth="1000.0" stylesheets="@../styles/app.css"
-            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.studyflow.controller.MainWindowController">
     <left>
         <VBox spacing="8.0" styleClass="sidebar" BorderPane.alignment="CENTER">
             <padding>
-                <Insets bottom="20.0" left="16.0" right="16.0" top="20.0"/>
+                <Insets bottom="20.0" left="14.0" right="14.0" top="20.0"/>
             </padding>
             <Label styleClass="sidebar-title" text="StudyFlow"/>
-            <Button onAction="#showDashboard" styleClass="nav-button" text="Dashboard"/>
-            <Button onAction="#showTasks" styleClass="nav-button" text="Tasks"/>
-            <Button onAction="#showSchedule" styleClass="nav-button" text="Schedule"/>
-            <Button onAction="#showExams" styleClass="nav-button" text="Exams"/>
-            <Button onAction="#showAnalytics" styleClass="nav-button" text="Analytics"/>
-            <Button onAction="#showSettings" styleClass="nav-button" text="Settings"/>
+
+            <Button fx:id="dashboardButton" onAction="#showDashboard" styleClass="nav-button" text="Dashboard"/>
+            <Button fx:id="tasksButton" onAction="#showTasks" styleClass="nav-button" text="Tasks"/>
+            <Button fx:id="scheduleButton" onAction="#showSchedule" styleClass="nav-button" text="Schedule"/>
+            <Button fx:id="examsButton" onAction="#showExams" styleClass="nav-button" text="Exams"/>
+            <Button fx:id="analyticsButton" onAction="#showAnalytics" styleClass="nav-button" text="Analytics"/>
+            <Button fx:id="settingsButton" onAction="#showSettings" styleClass="nav-button" text="Settings"/>
+
+            <VBox VBox.vgrow="ALWAYS"/>
+            <Label styleClass="sidebar-hint" text="v1.0"/>
         </VBox>
     </left>
 
     <center>
-        <StackPane styleClass="main-content">
-            <Label fx:id="contentTitleLabel" styleClass="content-title" text="Dashboard"/>
-        </StackPane>
+        <StackPane fx:id="contentContainer" styleClass="main-content" BorderPane.alignment="CENTER"/>
     </center>
 </BorderPane>

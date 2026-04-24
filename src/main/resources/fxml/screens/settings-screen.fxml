@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="14.0" styleClass="screen-root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <Label styleClass="screen-title" text="Settings"/>
+    <Label styleClass="screen-subtitle" text="Application preferences can be configured here."/>
+
+    <VBox styleClass="info-card" spacing="6.0">
+        <Label styleClass="card-title" text="Starter Tip"/>
+        <Label styleClass="card-text" text="Theme, notifications, and backup options can be added to this page."/>
+    </VBox>
+
+    <Region VBox.vgrow="ALWAYS"/>
+</VBox>
+
