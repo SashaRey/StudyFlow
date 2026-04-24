@@ -1,6 +1,8 @@
 package com.studyflow.service;
 
 import com.studyflow.model.Task;
+import com.studyflow.model.TaskPriority;
+import com.studyflow.model.TaskStatus;
 import com.studyflow.repository.TaskRepository;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +21,7 @@ class TaskServiceTest {
     void saveTaskShouldDelegateToRepository() throws SQLException {
         InMemoryTaskRepository repository = new InMemoryTaskRepository();
         TaskService service = new TaskService(repository);
-        Task task = new Task(1L, "Finish assignment", "Math chapter 3", LocalDate.now(), "PENDING");
+        Task task = new Task(1L, "Finish assignment", "Math chapter 3", LocalDate.now(), TaskStatus.PENDING, TaskPriority.MEDIUM);
 
         Task saved = service.saveTask(task);
 
@@ -31,7 +33,7 @@ class TaskServiceTest {
     void getTaskByIdShouldReturnOptionalValue() throws SQLException {
         InMemoryTaskRepository repository = new InMemoryTaskRepository();
         TaskService service = new TaskService(repository);
-        Task task = new Task(7L, "Revise notes", "Biology unit 2", LocalDate.now(), "PENDING");
+        Task task = new Task(7L, "Revise notes", "Biology unit 2", LocalDate.now(), TaskStatus.PENDING, TaskPriority.MEDIUM);
         repository.save(task);
 
         Optional<Task> found = service.getTaskById(7L);

@@ -7,17 +7,19 @@ public class Task {
     private String title;
     private String description;
     private LocalDate dueDate;
-    private String status;
+    private TaskStatus status;
+    private TaskPriority priority;
 
     public Task() {
     }
 
-    public Task(Long id, String title, String description, LocalDate dueDate, String status) {
+    public Task(Long id, String title, String description, LocalDate dueDate, TaskStatus status, TaskPriority priority) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.status = status;
+        this.priority = priority;
     }
 
     public Long getId() {
@@ -52,11 +54,19 @@ public class Task {
         this.dueDate = dueDate;
     }
 
-    public String getStatus() {
+    public TaskStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TaskStatus status) {
         this.status = status;
+    }
+
+    public TaskPriority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(TaskPriority priority) {
+        this.priority = priority;
     }
 }

@@ -8,17 +8,19 @@ public class StudySession {
     private LocalDateTime startedAt;
     private LocalDateTime endedAt;
     private Integer durationMinutes;
+    private SessionType type;
     private String notes;
 
     public StudySession() {
     }
 
-    public StudySession(Long id, Long subjectId, LocalDateTime startedAt, LocalDateTime endedAt, Integer durationMinutes, String notes) {
+    public StudySession(Long id, Long subjectId, LocalDateTime startedAt, LocalDateTime endedAt, Integer durationMinutes, SessionType type, String notes) {
         this.id = id;
         this.subjectId = subjectId;
         this.startedAt = startedAt;
         this.endedAt = endedAt;
         this.durationMinutes = durationMinutes;
+        this.type = type;
         this.notes = notes;
     }
 
@@ -60,6 +62,14 @@ public class StudySession {
 
     public void setDurationMinutes(Integer durationMinutes) {
         this.durationMinutes = durationMinutes;
+    }
+
+    public SessionType getType() {
+        return type;
+    }
+
+    public void setType(SessionType type) {
+        this.type = type;
     }
 
     public String getNotes() {

@@ -8,18 +8,18 @@ public class Exam {
     private String title;
     private LocalDateTime examDate;
     private String location;
-    private String status;
+    private ExamType type;
 
     public Exam() {
     }
 
-    public Exam(Long id, Long subjectId, String title, LocalDateTime examDate, String location, String status) {
+    public Exam(Long id, Long subjectId, String title, LocalDateTime examDate, String location, ExamType type) {
         this.id = id;
         this.subjectId = subjectId;
         this.title = title;
         this.examDate = examDate;
         this.location = location;
-        this.status = status;
+        this.type = type;
     }
 
     public Long getId() {
@@ -62,11 +62,11 @@ public class Exam {
         this.location = location;
     }
 
-    public String getStatus() {
-        return status;
+    public ExamType getType() {
+        return type;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setType(ExamType type) {
+        this.type = type;
     }
 }
