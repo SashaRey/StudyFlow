@@ -10,8 +10,14 @@ CREATE TABLE IF NOT EXISTS tasks (
     title TEXT NOT NULL,
     description TEXT,
     due_date TEXT,
-    status TEXT NOT NULL DEFAULT 'PENDING'
-);
+    status TEXT NOT NULL DEFAULT 'PENDING',
+    priority TEXT NOT NULL DEFAULT 'MEDIUM',
+    category TEXT,
+    subject_id INTEGER,
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (subject_id) REFERENCES subjects(id)
+    );
 
 CREATE TABLE IF NOT EXISTS schedule_entries (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

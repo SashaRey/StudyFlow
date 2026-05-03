@@ -8,9 +8,12 @@ import javafx.stage.Stage;
 public class MainApplication extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
+    public void init() {
         DatabaseManager.getInstance().initializeDatabase();
+    }
 
+    @Override
+    public void start(Stage primaryStage) {
         SceneManager sceneManager = new SceneManager(primaryStage);
         sceneManager.showMainWindow();
     }
