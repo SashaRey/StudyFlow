@@ -24,12 +24,12 @@ import java.util.Optional;
 public class SqliteTaskRepository implements TaskRepository {
 
     private static final String INSERT_SQL = """
-            INSERT INTO tasks (title, description, due_date, status, priority)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO tasks (title, description, due_date, status, priority, category)
+            VALUES (?, ?, ?, ?, ?, ?)
             """;
     private static final String UPDATE_SQL = """
             UPDATE tasks
-            SET title = ?, description = ?, due_date = ?, status = ?, priority = ?
+            SET title = ?, description = ?, due_date = ?, status = ?, priority = ?, category = ?
             WHERE id = ?
             """;
     private static final String DELETE_SQL = "DELETE FROM tasks WHERE id = ?";
@@ -65,6 +65,7 @@ public class SqliteTaskRepository implements TaskRepository {
         }
     }
 
+    @Override
     public Task update(Task task) {
         if (task.getId() == null) {
             throw new IllegalArgumentException("Task id is required for update");
@@ -139,8 +140,10 @@ public class SqliteTaskRepository implements TaskRepository {
         TaskPriority priority = task.getPriority() == null ? TaskPriority.MEDIUM : task.getPriority();
         statement.setString(5, priority.name());
 
+        statement.setString(6, task.getCategory());
+
         if (includeId) {
-            statement.setLong(6, task.getId());
+            statement.setLong(7, task.getId());
         }
     }
 
@@ -149,6 +152,7 @@ public class SqliteTaskRepository implements TaskRepository {
         task.setId(resultSet.getLong("id"));
         task.setTitle(resultSet.getString("title"));
         task.setDescription(resultSet.getString("description"));
+        task.setCategory(resultSet.getString("category"));
 
         String dueDate = resultSet.getString("due_date");
         task.setDueDate(dueDate == null ? null : LocalDate.parse(dueDate));
@@ -162,4 +166,3 @@ public class SqliteTaskRepository implements TaskRepository {
         return task;
     }
 }
-

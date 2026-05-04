@@ -6,7 +6,9 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.util.EnumMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 /**
  * Loads and switches screens inside the main content area.
@@ -27,7 +29,8 @@ public class NavigationManager {
 
     private Parent loadScreen(NavigationTarget target) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(target.getFxmlPath()));
+            ResourceBundle bundle = ResourceBundle.getBundle("i18n.Messages", Locale.getDefault());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(target.getFxmlPath()), bundle);
             return loader.load();
         } catch (IOException exception) {
             throw new IllegalStateException("Could not load screen: " + target.name(), exception);

@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="14.0" styleClass="screen-root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <Label styleClass="screen-title" text="Tasks"/>
-    <Label styleClass="screen-subtitle" text="Task list UI will appear here."/>
+<VBox spacing="14.0" styleClass="screen-root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studyflow.controller.TaskController">
+    <Label styleClass="screen-title" text="%tasks.title"/>
+    <Label styleClass="screen-subtitle" text="%tasks.subtitle"/>
 
-    <VBox styleClass="info-card" spacing="6.0">
-        <Label styleClass="card-title" text="Starter Tip"/>
-        <Label styleClass="card-text" text="Create your first task from this screen when task feature is connected."/>
+    <VBox spacing="10.0" styleClass="info-card">
+        <HBox spacing="10.0">
+            <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                <Label styleClass="card-title" text="%tasks.filters.title"/>
+                <HBox spacing="10.0">
+                    <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                        <Label styleClass="card-text" text="%tasks.filters.status"/>
+                        <ComboBox fx:id="statusFilter" promptText="%tasks.filters.statusAll" maxWidth="Infinity"/>
+                    </VBox>
+                    <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                        <Label styleClass="card-text" text="%tasks.filters.priority"/>
+                        <ComboBox fx:id="priorityFilter" promptText="%tasks.filters.priorityAll" maxWidth="Infinity"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <HBox spacing="8.0" alignment="CENTER_RIGHT">
+                <Button fx:id="addButton" text="%tasks.buttons.add" onAction="#handleAddTask"/>
+                <Button fx:id="editButton" text="%tasks.buttons.edit" onAction="#handleEditTask"/>
+                <Button fx:id="deleteButton" text="%tasks.buttons.delete" onAction="#handleDeleteTask"/>
+                <Button fx:id="completeButton" text="%tasks.buttons.complete" onAction="#handleCompleteTask"/>
+            </HBox>
+        </HBox>
+    </VBox>
+
+    <VBox spacing="8.0" styleClass="info-card" VBox.vgrow="ALWAYS">
+        <Label styleClass="card-title" text="%tasks.title"/>
+        <TableView fx:id="tasksTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="titleColumn" text="%tasks.table.title" prefWidth="220"/>
+                <TableColumn fx:id="dueDateColumn" text="%tasks.table.dueDate" prefWidth="120"/>
+                <TableColumn fx:id="priorityColumn" text="%tasks.table.priority" prefWidth="110"/>
+                <TableColumn fx:id="statusColumn" text="%tasks.table.status" prefWidth="110"/>
+                <TableColumn fx:id="categoryColumn" text="%tasks.table.category" prefWidth="140"/>
+            </columns>
+            <placeholder>
+                <VBox spacing="6.0" alignment="CENTER">
+                    <Label styleClass="card-title" text="%tasks.empty.title"/>
+                    <Label styleClass="card-text" text="%tasks.empty.subtitle"/>
+                </VBox>
+            </placeholder>
+        </TableView>
     </VBox>
 
     <Region VBox.vgrow="ALWAYS"/>
 </VBox>
-

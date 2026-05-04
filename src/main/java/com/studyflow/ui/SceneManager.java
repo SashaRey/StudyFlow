@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class SceneManager {
 
@@ -19,7 +21,8 @@ public class SceneManager {
 
     public void showMainWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(AppConfig.MAIN_WINDOW_FXML));
+            ResourceBundle bundle = ResourceBundle.getBundle("i18n.Messages", Locale.getDefault());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(AppConfig.MAIN_WINDOW_FXML), bundle);
             Parent root = loader.load();
 
             Object controller = loader.getController();
