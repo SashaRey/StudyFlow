@@ -1,18 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="14.0" styleClass="screen-root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <Label styleClass="screen-title" text="Analytics"/>
-    <Label styleClass="screen-subtitle" text="Study progress charts will be shown here."/>
+<VBox spacing="14.0" styleClass="screen-root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.studyflow.controller.AnalyticsController">
+    <Label styleClass="screen-title" text="%analytics.title"/>
+    <Label fx:id="analyticsMessageLabel" styleClass="card-text" text=""/>
 
-    <VBox styleClass="info-card" spacing="6.0">
-        <Label styleClass="card-title" text="Starter Tip"/>
-        <Label styleClass="card-text" text="Connect your study sessions to unlock productivity insights."/>
+    <VBox spacing="10.0" styleClass="info-card">
+        <GridPane hgap="16.0" vgap="8.0">
+            <Label styleClass="card-text" text="%analytics.totalTasks" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label fx:id="totalTasksLabel" styleClass="card-title" text="0" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label styleClass="card-text" text="%analytics.completedTasks" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="completedTasksLabel" styleClass="card-title" text="0" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label styleClass="card-text" text="%analytics.pendingTasks" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Label fx:id="pendingTasksLabel" styleClass="card-title" text="0" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label styleClass="card-text" text="%analytics.overdueTasks" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <Label fx:id="overdueTasksLabel" styleClass="card-title" text="0" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label styleClass="card-text" text="%analytics.totalStudyTime" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <Label fx:id="totalStudyTimeLabel" styleClass="card-title" text="0" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <Label styleClass="card-text" text="%analytics.studySessions" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <Label fx:id="studySessionsCountLabel" styleClass="card-title" text="0" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+        </GridPane>
     </VBox>
 
-    <Region VBox.vgrow="ALWAYS"/>
+    <VBox spacing="8.0" styleClass="info-card">
+        <Label styleClass="card-title" text="%analytics.productivityOverview"/>
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <Label styleClass="card-text" text="%analytics.completionRate"/>
+            <Label fx:id="completionRateLabel" styleClass="card-text" text="0"/>
+        </HBox>
+        <ProgressBar fx:id="completionProgressBar" prefWidth="280"/>
+    </VBox>
+
+    <VBox spacing="8.0" styleClass="info-card">
+        <Label styleClass="card-title" text="%analytics.taskStatusChart"/>
+        <PieChart fx:id="taskStatusPieChart" prefHeight="240" prefWidth="320"/>
+    </VBox>
 </VBox>
 
