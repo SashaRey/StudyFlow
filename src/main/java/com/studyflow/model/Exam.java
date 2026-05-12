@@ -1,25 +1,25 @@
 package com.studyflow.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Exam {
     private Long id;
     private Long subjectId;
     private String title;
-    private LocalDateTime examDate;
+    private LocalDate examDate;
     private String location;
-    private ExamType type;
+    private ExamStatus status;
 
     public Exam() {
     }
 
-    public Exam(Long id, Long subjectId, String title, LocalDateTime examDate, String location, ExamType type) {
+    public Exam(Long id, Long subjectId, String title, LocalDate examDate, String location, ExamStatus status) {
         this.id = id;
         this.subjectId = subjectId;
         this.title = title;
         this.examDate = examDate;
         this.location = location;
-        this.type = type;
+        this.status = status;
     }
 
     public Long getId() {
@@ -46,11 +46,11 @@ public class Exam {
         this.title = title;
     }
 
-    public LocalDateTime getExamDate() {
+    public LocalDate getExamDate() {
         return examDate;
     }
 
-    public void setExamDate(LocalDateTime examDate) {
+    public void setExamDate(LocalDate examDate) {
         this.examDate = examDate;
     }
 
@@ -62,11 +62,11 @@ public class Exam {
         this.location = location;
     }
 
-    public ExamType getType() {
-        return type;
+    public ExamStatus getStatus() {
+        return status;
     }
 
-    public void setType(ExamType type) {
-        this.type = type;
+    public void setStatus(ExamStatus status) {
+        this.status = status;
     }
 }

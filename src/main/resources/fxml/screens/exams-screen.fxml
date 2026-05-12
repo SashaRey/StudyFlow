@@ -1,16 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="14.0" styleClass="screen-root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <Label styleClass="screen-title" text="Exams"/>
-    <Label styleClass="screen-subtitle" text="Exam tracking section will be implemented here."/>
+<VBox spacing="14.0" styleClass="screen-root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studyflow.controller.ExamController">
+    <Label styleClass="screen-title" text="%exams.title"/>
 
-    <VBox styleClass="info-card" spacing="6.0">
-        <Label styleClass="card-title" text="Starter Tip"/>
-        <Label styleClass="card-text" text="Store exam date, subject, and preparation status in this module."/>
+    <VBox spacing="10.0" styleClass="info-card">
+        <Label styleClass="card-title" text="%exams.title"/>
+        <GridPane hgap="12.0" vgap="10.0">
+            <Label styleClass="card-text" text="%exams.form.subject" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="subjectComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label styleClass="card-text" text="%exams.form.date" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="examDatePicker" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label styleClass="card-text" text="%exams.form.location" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="locationField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label styleClass="card-text" text="%exams.form.status" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="statusComboBox" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        </GridPane>
+
+        <HBox spacing="8.0" alignment="CENTER_RIGHT">
+            <Button fx:id="addButton" text="%exams.button.add" onAction="#handleAddExam"/>
+            <Button fx:id="updateButton" text="%exams.button.update" onAction="#handleUpdateExam"/>
+            <Button fx:id="deleteButton" text="%exams.button.delete" onAction="#handleDeleteExam"/>
+            <Button fx:id="clearButton" text="%exams.button.clear" onAction="#handleClearForm"/>
+        </HBox>
+
+        <Label fx:id="examsMessageLabel" styleClass="card-text"/>
+    </VBox>
+
+    <VBox spacing="8.0" styleClass="info-card" VBox.vgrow="ALWAYS">
+        <Label styleClass="card-title" text="%exams.title"/>
+        <TableView fx:id="examsTableView" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="subjectColumn" text="%exams.table.subject" prefWidth="200"/>
+                <TableColumn fx:id="dateColumn" text="%exams.table.date" prefWidth="120"/>
+                <TableColumn fx:id="locationColumn" text="%exams.table.location" prefWidth="160"/>
+                <TableColumn fx:id="statusColumn" text="%exams.table.status" prefWidth="120"/>
+            </columns>
+            <placeholder>
+                <VBox spacing="6.0" alignment="CENTER">
+                    <Label styleClass="card-title" text="%exams.message.empty"/>
+                </VBox>
+            </placeholder>
+        </TableView>
     </VBox>
 
     <Region VBox.vgrow="ALWAYS"/>
