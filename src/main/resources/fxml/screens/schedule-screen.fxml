@@ -1,18 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="14.0" styleClass="screen-root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <Label styleClass="screen-title" text="Schedule"/>
-    <Label styleClass="screen-subtitle" text="Weekly planning view goes here."/>
+<VBox spacing="14.0" styleClass="screen-root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studyflow.controller.ScheduleController">
+    <Label styleClass="screen-title" text="%schedule.title"/>
+    <Label styleClass="screen-subtitle" text="%schedule.subtitle"/>
 
-    <VBox styleClass="info-card" spacing="6.0">
-        <Label styleClass="card-title" text="Starter Tip"/>
-        <Label styleClass="card-text" text="Use this page later for classes, study blocks, and reminders."/>
+    <VBox spacing="10.0" styleClass="info-card">
+        <HBox spacing="10.0">
+            <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                <Label styleClass="card-title" text="%schedule.actions.title"/>
+                <Label styleClass="card-text" text="%schedule.actions.subtitle"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <HBox spacing="8.0" alignment="CENTER_RIGHT">
+                <Button fx:id="addButton" text="%schedule.buttons.add" onAction="#handleAddEntry"/>
+                <Button fx:id="editButton" text="%schedule.buttons.edit" onAction="#handleEditEntry"/>
+                <Button fx:id="deleteButton" text="%schedule.buttons.delete" onAction="#handleDeleteEntry"/>
+            </HBox>
+        </HBox>
+    </VBox>
+
+    <VBox spacing="8.0" styleClass="info-card" VBox.vgrow="ALWAYS">
+        <Label styleClass="card-title" text="%schedule.table.title"/>
+        <TableView fx:id="scheduleTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="subjectIdColumn" text="%schedule.table.subjectId" prefWidth="110"/>
+                <TableColumn fx:id="startTimeColumn" text="%schedule.table.startTime" prefWidth="160"/>
+                <TableColumn fx:id="endTimeColumn" text="%schedule.table.endTime" prefWidth="160"/>
+                <TableColumn fx:id="locationColumn" text="%schedule.table.location" prefWidth="180"/>
+                <TableColumn fx:id="notesColumn" text="%schedule.table.notes" prefWidth="240"/>
+            </columns>
+            <placeholder>
+                <VBox spacing="6.0" alignment="CENTER">
+                    <Label styleClass="card-title" text="%schedule.empty.title"/>
+                    <Label styleClass="card-text" text="%schedule.empty.subtitle"/>
+                </VBox>
+            </placeholder>
+        </TableView>
     </VBox>
 
     <Region VBox.vgrow="ALWAYS"/>
 </VBox>
-
